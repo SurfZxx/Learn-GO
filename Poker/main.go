@@ -16,12 +16,9 @@ func main() {
 	counter := len(shuffledDeck) - 1
 	var myHand []string
 	var cpuHand []string
-	myHand = append(myHand, shuffledDeck[counter])
-	cpuHand = append(cpuHand, shuffledDeck[counter-1])
+	myHand = generateHands(shuffledDeck, counter)
 	counter -= 2
-
-	myHand = append(myHand, shuffledDeck[counter])
-	cpuHand = append(cpuHand, shuffledDeck[counter-1])
+	cpuHand = generateHands(shuffledDeck, counter)
 	counter -= 2
 	fmt.Println("My hand:\n" + myHand[0] + ", " + myHand[1] + "\n")
 	fmt.Println("CPU Hand:\n" + cpuHand[0] + ", " + cpuHand[1] + "\n")
@@ -36,9 +33,7 @@ func main() {
 
 	//print the first 3 cards
 	var gameCards []string
-	gameCards = append(gameCards, shuffledDeck[counter])
-	gameCards = append(gameCards, shuffledDeck[counter-1])
-	gameCards = append(gameCards, shuffledDeck[counter-2])
+	gameCards = round1(shuffledDeck, counter)
 	counter -= 3
 	fmt.Println("Game Cards:")
 	for i := 0; i < len(gameCards); i++ {
@@ -53,8 +48,7 @@ func main() {
 	}
 
 	//Print the last 2 game cards
-	gameCards = append(gameCards, shuffledDeck[counter])
-	gameCards = append(gameCards, shuffledDeck[counter-1])
+	gameCards = round2(shuffledDeck, gameCards, counter)
 	fmt.Println("\n")
 	fmt.Println("Game Cards:")
 	for i := 0; i < len(gameCards); i++ {
@@ -68,4 +62,7 @@ func main() {
 		os.Exit(1)
 	}
 
+	// Compare Hands to see the winner
+	winner := game(myHand, cpuHand)
+	fmt.Println("Winner is: " + winner)
 }
