@@ -33,3 +33,11 @@ func game(myHand []string, cpuHand []string) string {
 	}
 	return winner
 }
+
+func addPoint() {
+	myPoints += 3
+}
+
+func losePoint() {
+	myPoints -= 1
+}

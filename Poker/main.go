@@ -44,7 +44,7 @@ func main() {
 	fmt.Println("Do you want to keep playing:")
 	fmt.Scanln(&answer)
 	if answer == 0 {
-		os.Exit(1)
+		losePoint()
 	}
 
 	//Print the last 2 game cards
@@ -59,10 +59,19 @@ func main() {
 	fmt.Println("Do you want to keep playing:")
 	fmt.Scanln(&answer)
 	if answer == 0 {
-		os.Exit(1)
+		for i := 0; i < 2; i++ {
+			losePoint()
+		}
 	}
 
 	// Compare Hands to see the winner
 	winner := game(myHand, cpuHand)
 	fmt.Println("Winner is: " + winner)
+	if winner == "Player" {
+		addPoint()
+	} else if winner == "CPU" {
+		for i := 0; i < 3; i++ {
+			losePoint()
+		}
+	}
 }
