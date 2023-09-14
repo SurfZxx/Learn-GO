@@ -12,16 +12,16 @@ func metrics(feet float64, inch float64, altura float64) float64 {
 }
 
 func main() {
-	feet := "5"
-	inch := "8"
+	feet := "6"
+	inch := "4"
 	feets, err := strconv.Atoi(feet)
 	if err != nil {
-		fmt.Println("Error during conversion")
+		fmt.Println("Error during conversion 1")
 		return
 	}
 	inches, err := strconv.Atoi(inch)
 	if err != nil {
-		fmt.Println("Error during conversion")
+		fmt.Println("Error during conversion 2")
 		return
 	}
 	altura := 0
